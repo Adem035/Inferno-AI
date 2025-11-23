@@ -20,6 +20,7 @@ export class PythonBridge {
                 ['/Users/ademkok/Inferno-AI/Inferno/inferno_cli.py'],
                 {
                     cwd: '/Users/ademkok/Inferno-AI/Inferno',
+                    encoding: 'buffer',
                     env: {
                         ...process.env,
                         PYTHONUNBUFFERED: '1' // Disable Python output buffering
@@ -28,10 +29,12 @@ export class PythonBridge {
             );
 
             // Send configuration
-            this.process.stdin?.write(JSON.stringify(config) + '\n');
+            if (this.process.stdin) {
+                this.process.stdin.write(JSON.stringify(config) + '\n');
+            }
 
             // Stream output line-by-line using readline to handle buffering correctly
-            if (this.process.stdout) {
+            if (this.process && this.process.stdout) {
                 const readline = await import('readline');
                 const rl = readline.createInterface({
                     input: this.process.stdout,
@@ -57,7 +60,8 @@ export class PythonBridge {
             onEvent({
                 type: 'error',
                 message: error.message || 'Scan failed',
-                stack: error.stack
+                stack: error.stack,
+                timestamp: Date.now()
             });
         }
     }
