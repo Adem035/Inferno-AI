@@ -1,0 +1,158 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.38kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:22.04
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/ubuntu:22.04@sha256:104ae83764a5119017b8e8d6218fa0832b09df65aae7d5a6de29a85d813da2fb
+#4 resolve docker.io/library/ubuntu:22.04@sha256:104ae83764a5119017b8e8d6218fa0832b09df65aae7d5a6de29a85d813da2fb done
+#4 DONE 0.0s
+
+#5 [2/8] RUN apt-get update && apt-get install -y     curl     wget     ca-certificates     git     build-essential     python3     python3-pip     python3-venv     coreutils     findutils     grep     sed     gawk     netcat-traditional     dnsutils     nmap     nodejs     npm     jq     dirb     && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/8] RUN ARCH=$(dpkg --print-architecture) &&     wget -q https://go.dev/dl/go1.21.5.linux-${ARCH}.tar.gz &&     tar -C /usr/local -xzf go1.21.5.linux-${ARCH}.tar.gz &&     rm go1.21.5.linux-${ARCH}.tar.gz
+#6 CACHED
+
+#7 [4/8] RUN go install github.com/OJ/gobuster/v3@latest &&     go install github.com/ffuf/ffuf/v2@latest &&     cp /root/go/bin/* /usr/local/bin/
+#7 0.269 go: downloading github.com/OJ/gobuster/v3 v3.8.2
+#7 0.313 go: downloading github.com/OJ/gobuster v2.0.1+incompatible
+#7 0.414 go: github.com/OJ/gobuster/v3@v3.8.2 requires go >= 1.25; switching to go1.25.4
+#7 0.414 go: downloading go1.25.4 (linux/arm64)
+#7 5.084 go: downloading go.uber.org/automaxprocs v1.6.0
+#7 5.084 go: downloading github.com/urfave/cli/v2 v2.27.7
+#7 5.085 go: downloading github.com/pin/tftp/v3 v3.1.0
+#7 5.085 go: downloading software.sslmate.com/src/go-pkcs12 v0.6.0
+#7 5.086 go: downloading golang.org/x/term v0.34.0
+#7 5.086 go: downloading github.com/fatih/color v1.18.0
+#7 5.086 go: downloading github.com/google/uuid v1.6.0
+#7 5.311 go: downloading golang.org/x/net v0.43.0
+#7 5.320 go: downloading golang.org/x/crypto v0.41.0
+#7 5.342 go: downloading github.com/mattn/go-isatty v0.0.20
+#7 5.342 go: downloading golang.org/x/sys v0.35.0
+#7 5.342 go: downloading github.com/mattn/go-colorable v0.1.14
+#7 5.434 go: downloading github.com/cpuguy83/go-md2man/v2 v2.0.7
+#7 5.434 go: downloading github.com/xrash/smetrics v0.0.0-20250705151800-55b8f293f342
+#7 5.519 go: downloading github.com/russross/blackfriday/v2 v2.1.0
+#7 9.375 go: downloading github.com/ffuf/ffuf v1.5.0
+#7 9.388 go: downloading github.com/ffuf/ffuf/v2 v2.1.0
+#7 9.456 go: downloading github.com/andybalholm/brotli v1.0.5
+#7 9.459 go: downloading github.com/adrg/xdg v0.4.0
+#7 9.459 go: downloading github.com/pelletier/go-toml v1.9.5
+#7 9.463 go: downloading github.com/ffuf/pencode v0.0.0-20230421231718-2cea7e60a693
+#7 9.465 go: downloading github.com/PuerkitoBio/goquery v1.8.0
+#7 9.554 go: downloading golang.org/x/net v0.7.0
+#7 9.554 go: downloading github.com/andybalholm/cascadia v1.3.1
+#7 DONE 13.7s
+
+#8 [5/8] RUN python3 -m venv /opt/venv
+#8 DONE 1.4s
+
+#9 [6/8] RUN /opt/venv/bin/pip install --no-cache-dir     requests     httpx     aiohttp     beautifulsoup4     lxml     pyjwt     cryptography     urllib3     python-dotenv
+#9 0.335 Collecting requests
+#9 0.393   Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+#9 0.407      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.7/64.7 KB 4.8 MB/s eta 0:00:00
+#9 0.433 Collecting httpx
+#9 0.441   Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#9 0.450      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 KB 10.4 MB/s eta 0:00:00
+#9 0.981 Collecting aiohttp
+#9 0.995   Downloading aiohttp-3.13.2-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (1.7 MB)
+#9 1.115      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 14.0 MB/s eta 0:00:00
+#9 1.140 Collecting beautifulsoup4
+#9 1.150   Downloading beautifulsoup4-4.14.2-py3-none-any.whl (106 kB)
+#9 1.154      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.4/106.4 KB 37.7 MB/s eta 0:00:00
+#9 1.359 Collecting lxml
+#9 1.368   Downloading lxml-6.0.2-cp310-cp310-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (5.1 MB)
+#9 1.599      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 22.1 MB/s eta 0:00:00
+#9 1.631 Collecting pyjwt
+#9 1.640   Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
+#9 1.843 Collecting cryptography
+#9 1.854   Downloading cryptography-46.0.3-cp38-abi3-manylinux_2_34_aarch64.whl (4.3 MB)
+#9 1.956      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 42.9 MB/s eta 0:00:00
+#9 1.993 Collecting urllib3
+#9 2.002   Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+#9 2.004      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 129.8/129.8 KB 88.8 MB/s eta 0:00:00
+#9 2.024 Collecting python-dotenv
+#9 2.033   Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+#9 2.055 Collecting idna<4,>=2.5
+#9 2.064   Downloading idna-3.11-py3-none-any.whl (71 kB)
+#9 2.066      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 KB 60.4 MB/s eta 0:00:00
+#9 2.088 Collecting certifi>=2017.4.17
+#9 2.100   Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+#9 2.103      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 159.4/159.4 KB 95.7 MB/s eta 0:00:00
+#9 2.198 Collecting charset_normalizer<4,>=2
+#9 2.207   Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (148 kB)
+#9 2.211      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.8/148.8 KB 55.0 MB/s eta 0:00:00
+#9 2.236 Collecting httpcore==1.*
+#9 2.243   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#9 2.247      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 KB 60.1 MB/s eta 0:00:00
+#9 2.269 Collecting anyio
+#9 2.276   Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+#9 2.280      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.1/109.1 KB 50.3 MB/s eta 0:00:00
+#9 2.299 Collecting h11>=0.16
+#9 2.307   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#9 2.325 Collecting aiosignal>=1.4.0
+#9 2.335   Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+#9 2.355 Collecting aiohappyeyeballs>=2.5.0
+#9 2.363   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+#9 2.428 Collecting propcache>=0.2.0
+#9 2.445   Downloading propcache-0.4.1-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (201 kB)
+#9 2.448      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 201.0/201.0 KB 90.4 MB/s eta 0:00:00
+#9 2.465 Collecting async-timeout<6.0,>=4.0
+#9 2.474   Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+#9 2.732 Collecting multidict<7.0,>=4.5
+#9 2.741   Downloading multidict-6.7.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (242 kB)
+#9 2.747      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.6/242.6 KB 48.7 MB/s eta 0:00:00
+#9 3.015 Collecting yarl<2.0,>=1.17.0
+#9 3.025   Downloading yarl-1.22.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (347 kB)
+#9 3.031      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 347.5/347.5 KB 65.0 MB/s eta 0:00:00
+#9 3.049 Collecting attrs>=17.3.0
+#9 3.057   Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+#9 3.058      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.6/67.6 KB 826.5 MB/s eta 0:00:00
+#9 3.133 Collecting frozenlist>=1.1.1
+#9 3.142   Downloading frozenlist-1.8.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (221 kB)
+#9 3.147      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.6/221.6 KB 56.5 MB/s eta 0:00:00
+#9 3.175 Collecting soupsieve>1.2
+#9 3.183   Downloading soupsieve-2.8-py3-none-any.whl (36 kB)
+#9 3.202 Collecting typing-extensions>=4.0.0
+#9 3.211   Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#9 3.213      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 KB 568.2 MB/s eta 0:00:00
+#9 3.360 Collecting cffi>=2.0.0
+#9 3.369   Downloading cffi-2.0.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (216 kB)
+#9 3.374      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.4/216.4 KB 53.0 MB/s eta 0:00:00
+#9 3.399 Collecting pycparser
+#9 3.406   Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+#9 3.411      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.1/118.1 KB 31.8 MB/s eta 0:00:00
+#9 3.448 Collecting exceptiongroup>=1.0.2
+#9 3.457   Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+#9 3.468 Collecting sniffio>=1.1
+#9 3.475   Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#9 3.537 Installing collected packages: urllib3, typing-extensions, soupsieve, sniffio, python-dotenv, pyjwt, pycparser, propcache, lxml, idna, h11, frozenlist, charset_normalizer, certifi, attrs, async-timeout, aiohappyeyeballs, requests, multidict, httpcore, exceptiongroup, cffi, beautifulsoup4, aiosignal, yarl, cryptography, anyio, httpx, aiohttp
+#9 4.120 Successfully installed aiohappyeyeballs-2.6.1 aiohttp-3.13.2 aiosignal-1.4.0 anyio-4.11.0 async-timeout-5.0.1 attrs-25.4.0 beautifulsoup4-4.14.2 certifi-2025.11.12 cffi-2.0.0 charset_normalizer-3.4.4 cryptography-46.0.3 exceptiongroup-1.3.1 frozenlist-1.8.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 lxml-6.0.2 multidict-6.7.0 propcache-0.4.1 pycparser-2.23 pyjwt-2.10.1 python-dotenv-1.2.1 requests-2.32.5 sniffio-1.3.1 soupsieve-2.8 typing-extensions-4.15.0 urllib3-2.5.0 yarl-1.22.0
+#9 DONE 4.3s
+
+#10 [7/8] RUN mkdir -p /usr/share/wordlists &&     cd /usr/share/wordlists &&     wget -q https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt &&     wget -q https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/raft-medium-directories.txt &&     wget -q https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/big.txt &&     wget -q https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/api/api-endpoints.txt
+#10 DONE 0.3s
+
+#11 [8/8] WORKDIR /workspace
+#11 DONE 0.0s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 17.3s done
+#12 exporting manifest sha256:6eee23079cde9f3c2771e79ad23f7d7f4069e1977fdecb0494ac19308cd57c9c
+#12 exporting manifest sha256:6eee23079cde9f3c2771e79ad23f7d7f4069e1977fdecb0494ac19308cd57c9c 0.0s done
+#12 exporting config sha256:31d21ef26aebc5dde8f878eda7fbdda943ca8594d26538c83d335c94fd24a178 done
+#12 exporting attestation manifest sha256:f399eb6a9cdaf751c528ea41651ea774a0204fbfe1b9f990f5869dc4c1b78eda 0.0s done
+#12 exporting manifest list sha256:ec7f968ce93bc3bd841ca111f92d5627ad1975347f864222a3619cf64313a310 done
+#12 naming to docker.io/library/inferno-sandbox:latest done
+#12 unpacking to docker.io/library/inferno-sandbox:latest
+#12 unpacking to docker.io/library/inferno-sandbox:latest 7.3s done
+#12 DONE 24.6s

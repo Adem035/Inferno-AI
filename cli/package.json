@@ -1,0 +1,44 @@
+{
+  "name": "@inferno/cli",
+  "version": "1.0.0",
+  "description": "Production-grade CLI for Inferno Security Scanner",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "inferno": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "esbuild src/index.tsx --bundle --platform=node --target=node18 --outfile=dist/index.js --format=esm --packages=external",
+    "dev": "tsx src/index.tsx",
+    "watch": "esbuild src/index.tsx --bundle --platform=node --target=node18 --outfile=dist/index.js --format=esm --packages=external --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "security",
+    "scanner",
+    "cli",
+    "pentesting"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ink": "^4.4.1",
+    "react": "^18.2.0",
+    "ink-text-input": "^5.0.1",
+    "ink-spinner": "^5.0.0",
+    "ink-gradient": "^3.0.0",
+    "ink-big-text": "^2.0.0",
+    "ink-select-input": "^5.0.0",
+    "execa": "^8.0.1",
+    "chalk": "^5.3.0",
+    "gradient-string": "^2.0.2",
+    "ora": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "esbuild": "^0.19.11"
+  }
+}
